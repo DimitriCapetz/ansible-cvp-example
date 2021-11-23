@@ -1,0 +1,6 @@
+all:
+  children:
+    CVP_SERVERS:
+      hosts:
+        cvaas:
+          ansible_host: www.arista.io

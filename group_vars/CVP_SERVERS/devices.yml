@@ -1,0 +1,20 @@
+###############################################################
+# Device Inventory:
+# Add new section for each device you want to manage configlets
+# Required fields:
+#  Key:
+#    fqdn:
+#    parentContainerName:
+#    configlets:
+#
+# Note: You do no need to list configlets that are inherited
+#       from a container the device is attached to.  CVP will
+#       merge them together
+###############################################################
+
+CVP_DEVICES:
+  - fqdn: ZtpDemoSwitch
+    parentContainerName: ZTP_Spine
+    configlets:
+      - ZtpDemoSwitch_Mgmt
+      - ZtpDemoSwitch_Config
