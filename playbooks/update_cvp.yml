@@ -18,10 +18,8 @@
         state: present
       register: CVP_DEVICES_RESULT
 
-    # Reminder message just in case there are Tasks that need to be executed in CVP
-    # We do not automatically execute any tasks in CVP
-    - name: "Follow Up Message"
-      tags: [ always ]
-      debug:
-        msg: "If needed, manually create change control & execute any pending tasks in CVP to apply changes"
-
+    # Automatically execute tasks from above task when assigned configlets
+    - name: Execute all tasks registered in cvp_configlets variable
+      tags: [execute]
+      cv_task_v3:
+        tasks: "{{ CVP_DEVICES_RESULT.taskIds }}"
