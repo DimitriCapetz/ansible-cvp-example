@@ -1,6 +1,6 @@
 ---
 - name: Update Configlets and Devices
-  hosts: cvp
+  hosts: cvaas
   connection: local
   gather_facts: no
 

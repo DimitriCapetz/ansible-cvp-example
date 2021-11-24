@@ -4,6 +4,7 @@ FROM python:3.8
 # Install additional utils
 RUN apt update && apt install -y sudo \
                                  vim \
+                                 ansible \
                                  git \
                                  zip \
                                  cloc \
@@ -11,8 +12,6 @@ RUN apt update && apt install -y sudo \
                                  zsh \
                                  zsh-syntax-highlighting \
                                  zsh-doc \
-                                 less \
-                                 liquidprompt \
                                  software-properties-common
 
 RUN apt -y dist-upgrade
@@ -32,8 +31,8 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
 
 # Install Python Packages
-#RUN pip install --upgrade pip
-#RUN pip install dotbot docutils Pyyaml lxml jsonrpclib ansible cvprac pyeapi jsonschema treelib
+RUN pip install --upgrade pip
+RUN pip install dotbot docutils Pyyaml lxml jsonrpclib ansible cvprac pyeapi jsonschema treelib
 
 # Clone AVD and CVP Collections
 RUN git clone https://github.com/aristanetworks/ansible-avd.git collections/ansible-avd
